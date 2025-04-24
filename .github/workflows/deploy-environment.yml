@@ -13,18 +13,14 @@ jobs:
     environment: ${{ inputs.environment }}
 
     steps:
-      - name: pintar la variable común a todos los environment
+      - name: pintar variables segun environment
         run: |
-          echo "API_URL es $API_URL"
-
-      - name: buscar información especifica de cada environment
-        run: |
+          echo "la API_URL es ${{ vars.API_URL }}"
           if [ "${{ inputs.environment }}" = "development" ]; then
-            echo "info de development es $DEVELOPMENT_INFO"
+            echo "la info de development es ${{ vars.DEVELOPMENT_INFO }}"
           elif [ "${{ inputs.environment }}" = "staging" ]; then
-            echo "info de staging es $STAGING_INFO"
+            echo "la info de staging es ${{ vars.STAGING_INFO }}"
           elif [ "${{ inputs.environment }}" = "production" ]; then
-            echo "info de production es $PRODUCTION_INFO"
-          else
-            echo "el environment ese no existe ehh"
+            echo "la info de production es ${{ vars.PRODUCTION_INFO }}"
           fi
+
