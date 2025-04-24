@@ -16,8 +16,7 @@ jobs:
       - name: mostrar las variables
         run: |
           # pinta las variables cargadas
-          echo "la API_URL es $env.API_URL"
-          echo "la info es $env.INFO"
+          env
   
 
 
