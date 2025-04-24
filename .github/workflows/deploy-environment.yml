@@ -7,16 +7,18 @@ on:
         required: true
         type: string
 
+env:
+  SHELL: /bin/bash
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
-    
+
     steps:
-      - name: mostrar las variables
-        run: |
-          # pinta las variables cargadas
-          env
+    - name: Verify environment
+      run : |
+        echo "Environment variable info es ${{ vars.INFO }}"
   
 
 
