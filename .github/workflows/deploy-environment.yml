@@ -11,13 +11,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
-    env:
-      API_URL: ${{ vars.API_URL }}
-      INFO: ${{ vars.INFO }}
-      
+    
     steps:
-      - name: mostrar lvariables
+      - name: mostrar las variables
         run: |
+          # cargar las variables en el entorno
+          echo "API_URL=${{ vars.API_URL }}" >> $GITHUB_ENV
+          echo "INFO=${{ vars.INFO }}" >> $GITHUB_ENV
+          
+          # pinta las variables cargadas
           echo "la API_URL es $API_URL"
           echo "la info es $INFO"
+
 
