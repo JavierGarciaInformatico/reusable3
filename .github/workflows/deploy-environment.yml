@@ -15,13 +15,9 @@ jobs:
     steps:
       - name: mostrar las variables
         run: |
-          # cargar las variables en el entorno
-          echo "API_URL=${{ vars.API_URL }}" >> $GITHUB_ENV
-          echo "INFO=${{ vars.INFO }}" >> $GITHUB_ENV
-          
           # pinta las variables cargadas
-          echo "la API_URL es $API_URL"
-          echo "la info es $INFO"
-          echo "entorno es ${{ inputs.environment }}"
+          echo "la API_URL es $env.API_URL"
+          echo "la info es $env.INFO"
+  
 
 
