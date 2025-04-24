@@ -22,5 +22,6 @@ jobs:
           # pinta las variables cargadas
           echo "la API_URL es $API_URL"
           echo "la info es $INFO"
+          echo "entorno es ${{ inputs.environment }}"
 
 
