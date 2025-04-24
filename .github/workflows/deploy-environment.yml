@@ -11,16 +11,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
-
+    env:
+      API_URL: ${{ vars.API_URL }}
+      INFO: ${{ vars.INFO }}
+      
     steps:
-      - name: pintar variables segun environment
+      - name: mostrar lvariables
         run: |
-          echo "la API_URL es ${{ vars.API_URL }}"
-          if [ "${{ inputs.environment }}" = "development" ]; then
-            echo "la info de development es ${{ vars.DEVELOPMENT_INFO }}"
-          elif [ "${{ inputs.environment }}" = "staging" ]; then
-            echo "la info de staging es ${{ vars.STAGING_INFO }}"
-          elif [ "${{ inputs.environment }}" = "production" ]; then
-            echo "la info de production es ${{ vars.PRODUCTION_INFO }}"
-          fi
+          echo "la API_URL es $API_URL"
+          echo "la info es $INFO"
 
