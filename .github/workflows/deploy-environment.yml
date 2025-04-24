@@ -1,11 +1,7 @@
 name: reusable 3 1
 
 on:
-  workflow_call:
-    inputs:
-      environment:
-        required: true
-        type: string
+  workflow_dispatch:
 
 env:
   SHELL: /bin/bash
@@ -13,12 +9,11 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: production
 
     steps:
     - name: Verify environment
       run : |
         echo "Environment variable info es ${{ vars.INFO }}"
-  
 
 
