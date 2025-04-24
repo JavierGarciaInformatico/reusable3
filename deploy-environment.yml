@@ -1,0 +1,30 @@
+name: reusable 3 1
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: pintar la variable común a todos los environment
+        run: |
+          echo "API_URL es $API_URL"
+
+      - name: buscar información especifica de cada environment
+        run: |
+          if [ "${{ inputs.environment }}" = "development" ]; then
+            echo "info de development es $DEVELOPMENT_INFO"
+          elif [ "${{ inputs.environment }}" = "staging" ]; then
+            echo "info de staging es $STAGING_INFO"
+          elif [ "${{ inputs.environment }}" = "production" ]; then
+            echo "info de production es $PRODUCTION_INFO"
+          else
+            echo "el environment ese no existe ehh"
+          fi
