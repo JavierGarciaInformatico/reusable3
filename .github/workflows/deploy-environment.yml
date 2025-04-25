@@ -1,19 +1,26 @@
 name: reusable 3 1
 
 on:
-  workflow_dispatch:
-
-env:
-  SHELL: /bin/bash
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      info:
+        required: true
+        type: string
+      api:
+        required: true
+        type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
-
     steps:
-    - name: Verify environment
-      run : |
-        echo "Environment variable info es ${{ vars.INFO }}"
+      - name: mostrar las variables pasadas
+        run: |
+          echo "la API_URL es ${{ inputs.api }}"
+          echo "la info es ${{ inputs.info }}"
+          echo "el envionment sería ${{ inputs.environment }}"
 
 
